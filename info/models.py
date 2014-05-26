@@ -30,3 +30,10 @@ class Item(models.Model):
 
     def __unicode__(self):
         return unicode(self.title)
+
+class Custom(models.Model):
+    label = models.CharField(unique=True, max_length=50)
+    value = models.TextField()
+
+    def __unicode__(self):
+        return unicode(self.label)
