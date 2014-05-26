@@ -1,0 +1,12 @@
+<h1>{{ leaflet.title }}</h1>
+<form name="input" action="." method="post">
+{% for section in leaflet.section_set.all %}
+  <h2>{{ section.title }}</h2>
+  {{ section.form }}
+{% endfor %}
+
+{% for form in extra_forms %}
+{{ form }}
+{% endform %}}
+<input type="submit" value="Submit">
+</form> 
