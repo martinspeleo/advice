@@ -2,11 +2,25 @@ from django.shortcuts import render
 from models import *
 from forms import *
 from forms import section_form_factory
+from default_values import defaults
+
+class CustomLookup:
+    def __getitem__(self, label):
+        try:
+            return Custom.objects.get(label=label).value
+        except Custom.DoesNotExist:
+            try:
+                return defaults[label]
+            except KeyError:
+                 return defaults[None]
+
+CUSTOM_LOOKUP = CustomLookup()
 
 def home(request):
-    return render(request,
+    return render(request, 
                   "index.html", 
-                  {"leaflets": Leaflet.objects.all()})
+                  {"leaflets": Leaflet.objects.all(),
+                   "custom": CUSTOM_LOOKUP})
 
 def leaflet(request, leaflet_pk):
     leaflet = Leaflet.objects.get(pk = leaflet_pk)
