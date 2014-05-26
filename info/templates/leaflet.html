@@ -7,11 +7,47 @@
 {% csrf_token %}
 {% for section in sections %}
   <h3>{{ section.title }}</h3>
-  {{ section.form.as_p }}
+  {% if section.form.non_field_errors %}
+  <div class="form_errors">
+    {% for err in section.form.non_field_errors %}
+    <div class="form_error_message">{{ err }}</div>
+    {% endfor %}
+  </div>	
+  {% endif %}
+  {% for hidden in section.form.hidden_fields %}
+     {{ hidden }}
+  {% endfor %}
+  {% for field in section.form.visible_fields %}
+    <div {% if field.errors %}class="field_error"{% endif %}>
+      {{ field.label_tag }}
+      {{ field }}
+      {% for err in field.errors %}
+      <span class="error_message">{{ err }}</span>
+      {% endfor %}
+    </div>
+  {% endfor %}
 {% endfor %}
 
 {% for form in extra_forms %}
-{{ form.as_p }}
+  {% if form.non_field_errors %}
+  <div class="form_errors">
+    {% for err in form.non_field_errors %}
+    <div class="form_error_message">{{ err }}</div>
+    {% endfor %}
+  </div>	
+  {% endif %}
+  {% for hidden in form.hidden_fields %}
+     {{ hidden }}
+  {% endfor %}
+  {% for field in form.visible_fields %}
+    <div {% if field.errors %}class="field_error"{% endif %}>
+      {{ field.label_tag }}
+      {{ field }}
+      {% for err in field.errors %}
+      <span class="error_message">{{ err }}</span>
+      {% endfor %}
+    </div>
+  {% endfor %}
 {% endfor %}
 <input type="submit" value="Submit">
 </form> 
