@@ -9,7 +9,6 @@ class MobileForm(forms.Form):
 
 def clean_unique_required(self):
     cleaned_data = super(forms.Form, self).clean()
-    print cleaned_data.values(), min(cleaned_data.values())
     if not max(cleaned_data.values()):
         raise forms.ValidationError("At least one of these options must be selected.")
 

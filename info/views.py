@@ -38,6 +38,13 @@ def leaflet(request, leaflet_pk):
         extra_forms.append(EmailForm(*args, prefix="email"))
     if leaflet.text:
         extra_forms.append(MobileForm(*args, prefix="mobile"))
+    if request.method == 'POST':
+        if min([form.is_valid() for form in extra_forms] +
+               [section["form"].is_valid() for section in sections]):#Are all forms valid?
+            
+            return render(request, 
+                  "confirm.html", 
+                  {"custom": CUSTOM_LOOKUP}) 
     return render(request,
                   "leaflet.html", 
                   {"leaflet": leaflet,
