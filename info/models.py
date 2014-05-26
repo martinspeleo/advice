@@ -1,5 +1,4 @@
 from django.db import models
-from forms import section_form_factory
 
 class Leaflet(models.Model):
     title = models.CharField(max_length=40)
@@ -19,9 +18,6 @@ class Section(models.Model):
 
     def __unicode__(self):
         return unicode(self.title)
-
-    def form(self):
-        return section_form_factory(self)()
 
 class Item(models.Model):
     section = models.ForeignKey("info.Section")

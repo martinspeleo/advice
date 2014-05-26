@@ -1,12 +1,13 @@
 <h1>{{ leaflet.title }}</h1>
 <form name="input" action="." method="post">
-{% for section in leaflet.section_set.all %}
+{% csrf_token %}
+{% for section in sections %}
   <h2>{{ section.title }}</h2>
-  {{ section.form }}
+  {{ section.form.as_p }}
 {% endfor %}
 
 {% for form in extra_forms %}
-{{ form }}
+{{ form.as_p }}
 {% endfor %}
 <input type="submit" value="Submit">
 </form> 
