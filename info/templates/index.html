@@ -1,5 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
 <ul>
 {% for leaflet in leaflets %}
-  <a href="{% url leaflet leaflet.pk %}" >{{ leaflet.title }}</a>
+  <li><a href="{% url 'leaflet' leaflet.pk %}" >{{ leaflet.title }}</a></li>
 {% endfor %}
 </ul>
+{% endblock %}

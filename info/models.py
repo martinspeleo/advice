@@ -8,7 +8,7 @@ class Leaflet(models.Model):
     text = models.BooleanField()
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
 
 class Section(models.Model):
     leaflet = models.ForeignKey("info.Leaflet")
@@ -17,7 +17,7 @@ class Section(models.Model):
     required = models.BooleanField()
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
 
 class Item(models.Model):
     section = models.ForeignKey("info.Section")
@@ -25,4 +25,4 @@ class Item(models.Model):
     content = models.TextField()
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
