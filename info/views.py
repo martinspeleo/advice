@@ -42,4 +42,5 @@ def leaflet(request, leaflet_pk):
                   "leaflet.html", 
                   {"leaflet": leaflet,
                    "sections": sections,
-                   "extra_forms": extra_forms})
+                   "extra_forms": extra_forms,
+                   "custom": CUSTOM_LOOKUP})

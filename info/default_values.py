@@ -1,2 +1,3 @@
 defaults={None: "No idea",
-          "title": "Default title"}
+          "title": "Customised leaflet",
+          "strap_line": "A record of your advice."}
