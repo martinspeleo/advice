@@ -1,0 +1,5 @@
+<ul>
+{% for leaflet in leaflets %}
+  <a href="{% url leaflet leaflet %}" >{{ leaflet.title }}</a>
+{% endfor %}
+</ul>
