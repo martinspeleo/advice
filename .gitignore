@@ -52,5 +52,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+#Gedit backups
+*~
+
 # Custom stuff:
 db.sqlite
