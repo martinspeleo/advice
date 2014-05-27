@@ -12,19 +12,21 @@
 {% endblock %}
 
 {% block content %}
-<form name="input" action="." method="post">
+<form name="input" action="." method="post" class="well">
 {% csrf_token %}
 {% for section in sections %}
-  <h3>{{ section.title }}</h3>
-  {% if section.form.non_field_errors %}
-  <div class="form_errors">
-    {% for err in section.form.non_field_errors %}
+  <fieldset>
+    <legend>{{ section.title }}</legend>
+    {% if section.form.non_field_errors %}
+    <div class="form_errors">
+      {% for err in section.form.non_field_errors %}
     <div class="form_error_message">{{ err }}</div>
     {% endfor %}
-  </div>	
-  {% endif %}
-  {% for hidden in section.form.hidden_fields %}
-     {{ hidden }}
+    </div>	
+    {% endif %}
+    {% for hidden in section.form.hidden_fields %}
+       {{ hidden }}
+  </fieldset>
   {% endfor %}
   {% for field in section.form.visible_fields %}
     <div {% if field.errors %}class="field_error"{% endif %}>

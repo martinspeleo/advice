@@ -54,4 +54,5 @@ def leaflet(request, leaflet_pk):
 
 def set_up_help(request):
     return render(request, 
-                  "set_up_help.html")
+                  "set_up_help.html",
+                  {"custom": CUSTOM_LOOKUP})
