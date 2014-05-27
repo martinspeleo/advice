@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block navigation %}
+          <li><a href="/">Home</a></li>
+          <li class="active"><a href="#">Set up help</a></li>
+          <li><a href="/admin">Admin</a></li>
+{% endblock %}
+
+{% block big_heading %}
+<div class="jumbotron">
+  <p class="lead">Use the <a href="/admin">Admin</a> to edit the Custom table.  For each piece of wording you want to change, set up a entry in the Custom table, with the relevant label (see below).  Put the new wording in the value field.</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<table class="table" summary="Values of labels and values for the Custom Table">
+  <thead>
+    <tr>
+       <th>Label</th>
+       <th>Default</th>
+       <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <td>title</td>
+       <td>Customised leaflet</td>
+       <td>Main header on home page.</td>
+    </tr>
+    <tr>
+       <td>strap_line</td>
+       <td>A record of your advice.</td>
+       <td>Wording under main header on home page.</td>
+    </tr>
+  </tbody
+</table>
+{% endblock %}

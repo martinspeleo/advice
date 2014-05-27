@@ -51,3 +51,7 @@ def leaflet(request, leaflet_pk):
                    "sections": sections,
                    "extra_forms": extra_forms,
                    "custom": CUSTOM_LOOKUP})
+
+def set_up_help(request):
+    return render(request, 
+                  "set_up_help.html")

@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 {% load url from future %}
 
+{% block navigation %}
+          <li><a href="/">Cancel</a></li>
+{% endblock %}
+
+{% block big_heading %}
+<div class="jumbotron">
+  <h2>{{ leaflet.title }}</h2>
+</div>
+{% endblock %}
+
 {% block content %}
-<h2>{{ leaflet.title }}</h2>
 <form name="input" action="." method="post">
 {% csrf_token %}
 {% for section in sections %}
