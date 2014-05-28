@@ -28,7 +28,9 @@ def section_form_factory(section):
                                                   )
                       }
     else:
-        properties = dict([(item.title, forms.BooleanField(required=False)) 
+        properties = dict([("i%i" % item.pk, 
+                            forms.BooleanField(label=item.title, 
+                                               required=False)) 
                        for item 
                        in section.item_set.all()])
         if section.required:
