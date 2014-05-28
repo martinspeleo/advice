@@ -23,16 +23,13 @@
     </tr>
   </thead>
   <tbody>
+{% for i in custom_help %}
     <tr>
-       <td>title</td>
-       <td>Customised leaflet</td>
-       <td>Main header on home page.</td>
+       <td>{{ i.label }}</td>
+       <td>{{ i.default }}</td>
+       <td>{{ i.description }}</td>
     </tr>
-    <tr>
-       <td>strap_line</td>
-       <td>A record of your advice.</td>
-       <td>Wording under main header on home page.</td>
-    </tr>
+{% endfor %}
   </tbody>
 </table>
 {% endblock %}
