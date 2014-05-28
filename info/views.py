@@ -62,8 +62,8 @@ def leaflet(request, leaflet_pk):
 
 
 def set_up_help(request):
-    custom_help = [{"label": label, "default": default, "description": lookup(label)} 
-                   for label, default 
+    custom_help = [{"label": label, "default": lookup(label), "description": description} 
+                   for label, description 
                    in descriptions.items()]
     return render(request, 
                   "set_up_help.html",
