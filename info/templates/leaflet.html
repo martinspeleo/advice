@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-<form name="input" action="." method="post" class="well">
+<form name="input" action="." method="post" class="form-inline" role="form">
 {% csrf_token %}
 {% for section in sections %}
   <fieldset>
@@ -21,14 +21,13 @@
     <div class="form_errors">
       {% for err in section.form.non_field_errors %}
     <div class="form_error_message">{{ err }}</div>
-    {% endfor %}
+      {% endfor %}
     </div>	
     {% endif %}
     {% for hidden in section.form.hidden_fields %}
        {{ hidden }}
-  </fieldset>
-  {% endfor %}
-  {% for field in section.form.visible_fields %}
+    {% endfor %}
+    {% for field in section.form.visible_fields %}
     <div {% if field.errors %}class="field_error"{% endif %}>
       {{ field.label_tag }}
       {{ field }}
@@ -36,10 +35,13 @@
       <span class="error_message">{{ err }}</span>
       {% endfor %}
     </div>
-  {% endfor %}
+    {% endfor %}
+  </fieldset>
 {% endfor %}
 
-{% for form in extra_forms %}
+  <fieldset>
+    <legend>Contact details</legend>
+{% for form in extra_forms %}  
   {% if form.non_field_errors %}
   <div class="form_errors">
     {% for err in form.non_field_errors %}
@@ -60,6 +62,7 @@
     </div>
   {% endfor %}
 {% endfor %}
+  </fieldset>
 <input type="submit" value="Submit">
 </form> 
 {% endblock %}
