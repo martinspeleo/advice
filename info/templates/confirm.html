@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block navigation %}
+          <li><a href="/">Cancel</a></li>
+{% endblock %}
+
+{% block big_heading %}
+<div class="jumbotron">
+  <h2>{{ leaflet.title }}</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+{% for i in selected_items %}
+<p>{{ i.content }}</p>
+{% endfor %}
+{% endblock %}

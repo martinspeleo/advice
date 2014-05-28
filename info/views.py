@@ -3,6 +3,7 @@ from models import *
 from forms import *
 from forms import section_form_factory
 from default_values import defaults, descriptions
+import itertools
 
 class CustomLookup:
     def __getitem__(self, label):
@@ -46,10 +47,11 @@ def leaflet(request, leaflet_pk):
         if min([form.is_valid() for form in extra_forms] +
                [section["form"].is_valid() for section in sections] + 
                [True]): # final True item to handle case when there are no forms.
-            
+            selected_items = itertools.chain(*[section["form"].selections() for section in sections])
             return render(request, 
                   "confirm.html", 
-                  {"custom": CUSTOM_LOOKUP}) 
+                  {"selected_items": selected_items,
+                   "custom": CUSTOM_LOOKUP}) 
     return render(request,
                   "leaflet.html", 
                   {"leaflet": leaflet,
