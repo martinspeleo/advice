@@ -82,3 +82,20 @@ h2 {
     border-bottom: 0;
   }
 }
+
+/* Extra for CustAd */
+fieldset {
+    border: 1px groove #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    width:inherit; 
+    padding:0 10px; 
+    border-bottom:none;
+
+}	
