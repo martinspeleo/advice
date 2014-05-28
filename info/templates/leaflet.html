@@ -31,10 +31,10 @@
   {% for field in section.form.visible_fields %}
     <div {% if field.errors %}class="field_error"{% endif %}>
       {{ field.label_tag }}
-      {{ field }}
       {% for err in field.errors %}
       <span class="error_message">{{ err }}</span>
       {% endfor %}
+      {{ field }}
     </div>
   {% endfor %}
 {% endfor %}
@@ -53,10 +53,10 @@
   {% for field in form.visible_fields %}
     <div {% if field.errors %}class="field_error"{% endif %}>
       {{ field.label_tag }}
-      {{ field }}
       {% for err in field.errors %}
       <span class="error_message">{{ err }}</span>
       {% endfor %}
+      {{ field }}
     </div>
   {% endfor %}
 {% endfor %}

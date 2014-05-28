@@ -39,8 +39,10 @@ def leaflet(request, leaflet_pk):
     if leaflet.text:
         extra_forms.append(MobileForm(*args, prefix="mobile"))
     if request.method == 'POST':
+        #Are all forms valid?
         if min([form.is_valid() for form in extra_forms] +
-               [section["form"].is_valid() for section in sections]):#Are all forms valid?
+               [section["form"].is_valid() for section in sections] + 
+               [True]): # final True item to handle case when there are no forms.
             
             return render(request, 
                   "confirm.html", 
