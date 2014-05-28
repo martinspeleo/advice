@@ -50,7 +50,8 @@ def leaflet(request, leaflet_pk):
             selected_items = itertools.chain(*[section["form"].selections() for section in sections])
             return render(request, 
                   "confirm.html", 
-                  {"selected_items": selected_items,
+                  {"leaflet": leaflet,
+                   "selected_items": selected_items,
                    "custom": CUSTOM_LOOKUP}) 
     return render(request,
                   "leaflet.html", 
