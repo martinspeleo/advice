@@ -15,7 +15,10 @@ def clean_unique_required(self):
     return cleaned_data
 
 def selections_unique(self):
-    return [Item.objects.get(pk=self.cleaned_data['choose'])]
+    if self.cleaned_data['choose'] is None:
+        return [Item.objects.get(pk=self.cleaned_data['choose'])]
+    else:
+        return []
 
 def selections_not_unique(self):
     return [Item.objects.get(pk=k.strip("i")) for k in self.cleaned_data.keys()]
