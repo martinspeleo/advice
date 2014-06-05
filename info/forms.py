@@ -38,6 +38,7 @@ def section_form_factory(section):
                                     widget = forms.RadioSelect(),
                                                   )
                       }
+        properties["radio_buttons"] = True
         properties["selections"] = selections_unique
     else:
         properties = dict([("i%i" % item.pk, 
@@ -47,6 +48,7 @@ def section_form_factory(section):
                        in section.item_set.all()])
         if section.required:
             properties["clean"] = clean_unique_required
+        properties["check_boxes"] = True
         properties["selections"] = selections_not_unique
         
     return type('SectionForm', (forms.Form,), properties)

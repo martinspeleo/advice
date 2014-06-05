@@ -1,0 +1,26 @@
+
+  {% if section.form.non_field_errors %}
+    <div class="form_errors">
+      {% for err in section.form.non_field_errors %}
+    <div class="form_error_message">{{ err }}</div>
+      {% endfor %}
+    </div>	
+  {% endif %}
+  {% for hidden in section.form.hidden_fields %}
+       {{ hidden }}
+  {% endfor %}
+  {% for field in section.form.visible_fields %}
+     <label class="col-xs-3 control-label" for="{{ field.auto_id }}">Choose</label>
+     <div class="col-xs-9">
+      {% for err in field.errors %}
+          <span class="error_message">{{ err }}</span>
+      {% endfor %}
+      {% for choice in field %}
+        <div class="radio">
+           <label>
+             <input  id="{{ field.auto_id }}" name="{{ field.label }}" value="{{ choice.value }}" type="radio">{{ choice.choice_label }}
+           </label>
+         </div>
+      {% endfor %}
+      </div>
+  {% endfor %}

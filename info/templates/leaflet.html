@@ -17,33 +17,18 @@
 {% for section in sections %}
   <fieldset>
     <legend>{{ section.title }}</legend>
-  <div class="form-group">
-    {% if section.form.non_field_errors %}
-    <div class="form_errors">
-      {% for err in section.form.non_field_errors %}
-    <div class="form_error_message">{{ err }}</div>
-      {% endfor %}
-    </div>	
-    {% endif %}
-    {% for hidden in section.form.hidden_fields %}
-       {{ hidden }}
-    {% endfor %}
-    {% for field in section.form.visible_fields %}
-    <div {% if field.errors %}class="field_error"{% endif %}>
-      <div class="control-label">{{ field.label_tag }}</div>
-      {% for err in field.errors %}
-      <span class="error_message">{{ err }}</span>
-      {% endfor %}
-      <div class="controls">{{ field }}</div>
+    <div class="form-group">
+      {% if section.form.check_boxes %}
+        {% include 'checkboxsection.html' %}
+      {% elif section.form.radio_buttons %}
+        {% include 'radioboxsection.html' %}
+      {% endif %}
     </div>
-    {% endfor %}
-  </div>
   </fieldset>
 {% endfor %}
 
   <fieldset>
     <legend>Contact details</legend>
-  <div class="form-group">
 {% for form in extra_forms %}  
   {% if form.non_field_errors %}
   <div class="form_errors">
@@ -56,16 +41,19 @@
      {{ hidden }}
   {% endfor %}
   {% for field in form.visible_fields %}
-    <div {% if field.errors %}class="field_error"{% endif %}>
-      {{ field.label_tag }}
+   <div class="form-group">
+        <label for="{{ field.auto_id }}" class="control-label col-xs-2">{{ field.label }}</label>
+
       {% for err in field.errors %}
       <span class="error_message">{{ err }}</span>
       {% endfor %}
-      {{ field }}
-    </div>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" name="{{ field.label }}" id="{{ field.auto_id }}" placeholder="{{ field.label }}">
+      </div> 
+   </div>
   {% endfor %}
 {% endfor %}
-  </div>
+
   </fieldset>
 <input type="submit" value="Submit">
 </form> 
