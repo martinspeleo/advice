@@ -16,7 +16,13 @@
 {% csrf_token %}
 {% for section in sections %}
   <fieldset>
-    <legend>{{ section.title }}</legend>
+    <legend>{{ section.title }}
+      {% if section.required %}
+         (required)
+      {% else %}
+         (optional)
+      {% endif %}
+    </legend>
     <div class="form-group">
       {% if section.form.check_boxes %}
         {% include 'checkboxsection.html' %}
@@ -27,6 +33,7 @@
   </fieldset>
 {% endfor %}
 
+{% if extra_forms %}
   <fieldset>
     <legend>Contact details</legend>
 {% for form in extra_forms %}  
@@ -53,66 +60,9 @@
    </div>
   {% endfor %}
 {% endfor %}
-
   </fieldset>
+{% endif %}
 <input type="submit" value="Submit">
 </form> 
 
-<br />
-<br />
-
-
-<form name="input" action="." method="post" class="form-horizontal" role="form">
-  <fieldset>
-    <legend>Radio button example</legend>
-      <div class="form-group">
-        <label class="col-xs-3 control-label">Choose</label>
-        <div class="col-xs-9">
-          <div class="radio">
-            <label>
-              <input id="inlineradio1" name="sampleinlineradio" value="option1" type="radio">Radio 0
-            </label>
-         </div>
-         <div class="radio">
-           <label>
-             <input id="inlineradio1" name="sampleinlineradio" value="option1" type="radio">Radio 0
-          </label>
-         </div>
-         <div class="radio">
-           <label>
-             <input id="inlineradio1" name="sampleinlineradio" value="option1" type="radio">Radio 0
-           </label>
-         </div>
-       </div>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>Checkbox example</legend>
-      <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-            <div class="checkbox">
-                <label><input type="checkbox"> Remember me</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox"> Forget me</label>
-            </div>
-        </div>
-      </div>
-  </fieldset>
-  <fieldset>
-    <legend>Checkbox example</legend>
-      <div class="form-group">
-        <label for="inputEmail" class="control-label col-xs-2">Email</label>
-        <div class="col-xs-10">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputmobile" class="control-label col-xs-2">Mobile number</label>
-        <div class="col-xs-10">
-            <input type="password" class="form-control" id="inputMobile" placeholder="Mobile number">
-        </div>
-      </div>
-  </fieldset>
-</form>
 {% endblock %}

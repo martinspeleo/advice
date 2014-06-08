@@ -21,7 +21,7 @@ body {
   padding-bottom: 19px;
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
+  line-height: 30px;
 }
 
 /* NB New - Make h2 the main heading */
@@ -50,6 +50,8 @@ h2 {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+    padding-top: 1px;     /* N.B. customisation */
+    padding-bottom: 1px;  /* N.B. customisation */
 }
 .jumbotron .btn {
   padding: 14px 24px;
@@ -94,8 +96,21 @@ legend {
     font-size: 1.2em;
     font-weight: bold;
     text-align: left;
-    width:inherit; 
-    padding:0 10px; 
-    border-bottom:none;
+    width: inherit; 
+    padding: 0 10px; 
+    border-bottom: none;
 
-}	
+}
+
+.error_message {
+    font-size: 1.2em;
+    color: #D01010;
+    font-weight: bold;
+}
+
+.form_error_message {
+    font-size: 1.2em;
+    color: #D01010;
+    font-weight: bold;
+}
+
