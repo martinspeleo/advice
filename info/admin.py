@@ -16,6 +16,7 @@ class ItemInline(admin.StackedInline):
 class SectionAdmin(admin.ModelAdmin):
     list_display = ('leaflet', 'title', 'unique', 'required', 'order') 
     inlines = [ItemInline]
+    ordering = ('leaflet', 'order')    
 
 admin.site.register(Leaflet, LeafletAdmin)
 admin.site.register(Section, SectionAdmin)

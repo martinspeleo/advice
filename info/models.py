@@ -45,3 +45,7 @@ class Custom(models.Model):
 
     def __unicode__(self):
         return unicode(self.label)
+
+    class Meta:
+        verbose_name = "Customised wording"
+        verbose_name_plural = "Customised wordings"
